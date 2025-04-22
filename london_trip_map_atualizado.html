@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_09ae9d60618841864fe185b9916d5cb2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_09ae9d60618841864fe185b9916d5cb2" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_09ae9d60618841864fe185b9916d5cb2 = L.map(
+                "map_09ae9d60618841864fe185b9916d5cb2",
+                {
+                    center: [51.5074, -0.1278],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 11,
+                    zoomControl: true,
+                    preferCanvas: true,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a1eb4dc3df02c2e0a747ca691f6cad61 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_09ae9d60618841864fe185b9916d5cb2);
+        
+    
+            var marker_cluster_67f87f45c12e03fda2b735e1cb022000 = L.markerClusterGroup(
+                {}
+            );
+            map_09ae9d60618841864fe185b9916d5cb2.addLayer(marker_cluster_67f87f45c12e03fda2b735e1cb022000);
+        
+    
+            var marker_d5d2b42bd5b13240b097ce680ccd8bbe = L.marker(
+                [51.5363644, -0.345716],
+                {}
+            ).addTo(marker_cluster_67f87f45c12e03fda2b735e1cb022000);
+        
+    
+        var popup_1ce9d1fd9a031ab189e10b8ce0985b3f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7580ed6e80ffd3f06469f75a7b9030d6 = $(`<div id="html_7580ed6e80ffd3f06469f75a7b9030d6" style="width: 100.0%; height: 100.0%;">The Bridge Hotel - Greenford</div>`)[0];
+            popup_1ce9d1fd9a031ab189e10b8ce0985b3f.setContent(html_7580ed6e80ffd3f06469f75a7b9030d6);
+        
+
+        marker_d5d2b42bd5b13240b097ce680ccd8bbe.bindPopup(popup_1ce9d1fd9a031ab189e10b8ce0985b3f)
+        ;
+
+        
+    
+    
+            var marker_4e4d6feee730a7782f0869b88d4eab15 = L.marker(
+                [51.47, -0.4543],
+                {}
+            ).addTo(marker_cluster_67f87f45c12e03fda2b735e1cb022000);
+        
+    
+        var popup_4cf55aa97b283edc389afe6cf82a5b15 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7afee638263aaac09355899033b417e2 = $(`<div id="html_7afee638263aaac09355899033b417e2" style="width: 100.0%; height: 100.0%;">Heathrow Airport</div>`)[0];
+            popup_4cf55aa97b283edc389afe6cf82a5b15.setContent(html_7afee638263aaac09355899033b417e2);
+        
+
+        marker_4e4d6feee730a7782f0869b88d4eab15.bindPopup(popup_4cf55aa97b283edc389afe6cf82a5b15)
+        ;
+
+        
+    
+    
+            var marker_f5e658f64030d4bc4350dd71e74e4d43 = L.marker(
+                [51.6906, -0.4186],
+                {}
+            ).addTo(marker_cluster_67f87f45c12e03fda2b735e1cb022000);
+        
+    
+        var popup_c9745f76db0eb2dacae6d7ccdd3c3f0b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e8d0c8dd76a73486bf112cd104c6e37c = $(`<div id="html_e8d0c8dd76a73486bf112cd104c6e37c" style="width: 100.0%; height: 100.0%;">Warner Bros Studios</div>`)[0];
+            popup_c9745f76db0eb2dacae6d7ccdd3c3f0b.setContent(html_e8d0c8dd76a73486bf112cd104c6e37c);
+        
+
+        marker_f5e658f64030d4bc4350dd71e74e4d43.bindPopup(popup_c9745f76db0eb2dacae6d7ccdd3c3f0b)
+        ;
+
+        
+    
+    
+            var marker_da94bf21df20eda8e8852ed9e6e9d448 = L.marker(
+                [51.5145, -0.1291],
+                {}
+            ).addTo(marker_cluster_67f87f45c12e03fda2b735e1cb022000);
+        
+    
+        var popup_bc442466fee33f2e972f91e36b6f3e8e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0d7e3ad48448b97edc1e48a61da1f3a5 = $(`<div id="html_0d7e3ad48448b97edc1e48a61da1f3a5" style="width: 100.0%; height: 100.0%;">Palace Theatre (Harry Potter)</div>`)[0];
+            popup_bc442466fee33f2e972f91e36b6f3e8e.setContent(html_0d7e3ad48448b97edc1e48a61da1f3a5);
+        
+
+        marker_da94bf21df20eda8e8852ed9e6e9d448.bindPopup(popup_bc442466fee33f2e972f91e36b6f3e8e)
+        ;
+
+        
+    
+    
+            var marker_0ea61f829ccd2184987cfa61045dedb2 = L.marker(
+                [51.5033, -0.1196],
+                {}
+            ).addTo(marker_cluster_67f87f45c12e03fda2b735e1cb022000);
+        
+    
+        var popup_8ee62bdccb8d185d8882a7156b347ebf = L.popup({"maxWidth": "100%"});
+
+        
+            var html_45c7dfd209447080a82b3fcbe6ab869d = $(`<div id="html_45c7dfd209447080a82b3fcbe6ab869d" style="width: 100.0%; height: 100.0%;">London Eye</div>`)[0];
+            popup_8ee62bdccb8d185d8882a7156b347ebf.setContent(html_45c7dfd209447080a82b3fcbe6ab869d);
+        
+
+        marker_0ea61f829ccd2184987cfa61045dedb2.bindPopup(popup_8ee62bdccb8d185d8882a7156b347ebf)
+        ;
+
+        
+    
+    
+            var marker_3f4c5015c4fbbcf10811e2c41f221b57 = L.marker(
+                [51.5129, -0.1247],
+                {}
+            ).addTo(marker_cluster_67f87f45c12e03fda2b735e1cb022000);
+        
+    
+        var popup_c9f42e233da78b07806f31537209d4df = L.popup({"maxWidth": "100%"});
+
+        
+            var html_8be6db2671ae3f1349d0f1239c2b2d88 = $(`<div id="html_8be6db2671ae3f1349d0f1239c2b2d88" style="width: 100.0%; height: 100.0%;">Covent Garden</div>`)[0];
+            popup_c9f42e233da78b07806f31537209d4df.setContent(html_8be6db2671ae3f1349d0f1239c2b2d88);
+        
+
+        marker_3f4c5015c4fbbcf10811e2c41f221b57.bindPopup(popup_c9f42e233da78b07806f31537209d4df)
+        ;
+
+        
+    
+    
+            var marker_0eb8904cb27263bdb7e65881eb19ab1c = L.marker(
+                [51.5416, -0.1433],
+                {}
+            ).addTo(marker_cluster_67f87f45c12e03fda2b735e1cb022000);
+        
+    
+        var popup_91c6c2d80889a7264ed16267d3c75dfe = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f7d285435fb22e0cdcf33b7575bb3e69 = $(`<div id="html_f7d285435fb22e0cdcf33b7575bb3e69" style="width: 100.0%; height: 100.0%;">Camden Town</div>`)[0];
+            popup_91c6c2d80889a7264ed16267d3c75dfe.setContent(html_f7d285435fb22e0cdcf33b7575bb3e69);
+        
+
+        marker_0eb8904cb27263bdb7e65881eb19ab1c.bindPopup(popup_91c6c2d80889a7264ed16267d3c75dfe)
+        ;
+
+        
+    
+    
+            var marker_b8de93802ed6d501d49d0c27a1b32872 = L.marker(
+                [51.5091, -0.1977],
+                {}
+            ).addTo(marker_cluster_67f87f45c12e03fda2b735e1cb022000);
+        
+    
+        var popup_c5096cca6f58e8bbe9954af15d2bf150 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_21c548d140c7e239c4df9fa8cc8b54f1 = $(`<div id="html_21c548d140c7e239c4df9fa8cc8b54f1" style="width: 100.0%; height: 100.0%;">Notting Hill (The Churchill Arms)</div>`)[0];
+            popup_c5096cca6f58e8bbe9954af15d2bf150.setContent(html_21c548d140c7e239c4df9fa8cc8b54f1);
+        
+
+        marker_b8de93802ed6d501d49d0c27a1b32872.bindPopup(popup_c5096cca6f58e8bbe9954af15d2bf150)
+        ;
+
+        
+    
+    
+            var marker_aa5497bd7461d7c07e5fbfe86f07f929 = L.marker(
+                [51.5144, -0.1323],
+                {}
+            ).addTo(marker_cluster_67f87f45c12e03fda2b735e1cb022000);
+        
+    
+        var popup_feaf9c817fad3c38de8b5c9ab72c1f9d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_83baf0813f550cd1d1c5221e9d0eba6a = $(`<div id="html_83baf0813f550cd1d1c5221e9d0eba6a" style="width: 100.0%; height: 100.0%;">Soho (The Dog and Duck)</div>`)[0];
+            popup_feaf9c817fad3c38de8b5c9ab72c1f9d.setContent(html_83baf0813f550cd1d1c5221e9d0eba6a);
+        
+
+        marker_aa5497bd7461d7c07e5fbfe86f07f929.bindPopup(popup_feaf9c817fad3c38de8b5c9ab72c1f9d)
+        ;
+
+        
+    
+    
+            var marker_b915ab4d94ddd748939bf9356bd46c8c = L.marker(
+                [51.5055, -0.091],
+                {}
+            ).addTo(marker_cluster_67f87f45c12e03fda2b735e1cb022000);
+        
+    
+        var popup_bd74d0473b6cb2017ebda0d3fe419896 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c4d7ea36d7d24ac666c9e886ec72cb6b = $(`<div id="html_c4d7ea36d7d24ac666c9e886ec72cb6b" style="width: 100.0%; height: 100.0%;">Borough Market</div>`)[0];
+            popup_bd74d0473b6cb2017ebda0d3fe419896.setContent(html_c4d7ea36d7d24ac666c9e886ec72cb6b);
+        
+
+        marker_b915ab4d94ddd748939bf9356bd46c8c.bindPopup(popup_bd74d0473b6cb2017ebda0d3fe419896)
+        ;
+
+        
+    
+    
+            var marker_24463b3c386aa8a47253ca138c75862d = L.marker(
+                [51.5422, -0.3451],
+                {}
+            ).addTo(marker_cluster_67f87f45c12e03fda2b735e1cb022000);
+        
+    
+        var popup_46da596981d30742e4e0e5bda45aeb82 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_8b2b18c57dbfa43de1da14dee40960ac = $(`<div id="html_8b2b18c57dbfa43de1da14dee40960ac" style="width: 100.0%; height: 100.0%;">Greenford Station</div>`)[0];
+            popup_46da596981d30742e4e0e5bda45aeb82.setContent(html_8b2b18c57dbfa43de1da14dee40960ac);
+        
+
+        marker_24463b3c386aa8a47253ca138c75862d.bindPopup(popup_46da596981d30742e4e0e5bda45aeb82)
+        ;
+
+        
+    
+</script>
+</html>
