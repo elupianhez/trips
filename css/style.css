@@ -717,12 +717,14 @@ h6 {
 #rooms .room-img {
     overflow: hidden;
     max-height: 250px;
+    height: 350px;
 
 }
 
 #rooms .room-img img {
     transition: 0.3s;
     max-width: 500px;
+    height: 350px;
 }
 
 #rooms .room-img:hover img {
@@ -893,6 +895,7 @@ h6 {
     color: #00CED1;
     border-radius: 30px;
     background: white;
+    margin-bottom: 10px;
 }
 
 #rooms .room-link a:first-child {
