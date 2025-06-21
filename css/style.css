@@ -716,7 +716,6 @@ h6 {
 
 #rooms .room-img {
     overflow: hidden;
-    max-height: 250px;
     height: 350px;
 
 }
@@ -896,6 +895,7 @@ h6 {
     border-radius: 30px;
     background: white;
     margin-bottom: 10px;
+    width: 225px;
 }
 
 #rooms .room-link a:first-child {
