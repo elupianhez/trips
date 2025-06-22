@@ -704,21 +704,34 @@ h6 {
 #rooms .room-img,
 #rooms .room-des {
     position: relative;
-    top: 50%;
-    -moz-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
+    top: 0;
+    transform: none;
 }
 
 #rooms .room-des {
     width: 100%;
     text-align: center;
+    position: relative;
+    top: 20%;
 }
 
 #rooms .room-img {
-    overflow: hidden;
-    height: 350px;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 450px;
+}
 
+.img-london {
+    background-image: url(../img/london.jpeg);
+}
+
+.img-wacken {
+    background-image: url(../img/wacken.jpg);
+}
+
+.img-usa {
+    background-image: url(../img/usa.jpg);
 }
 
 #rooms .room-img img {
@@ -896,11 +909,7 @@ h6 {
     border-radius: 30px;
     background: white;
     margin-bottom: 10px;
-    width: 225px;
-}
-
-#rooms .room-link a:first-child {
-    margin-right: 15px;
+    width: 96%;
 }
 
 #rooms .room-link a:hover {
@@ -1402,4 +1411,48 @@ input::-ms-input-placeholder {
 #footer p {
     margin: 0;
     font-size: 18px;
+}
+
+.day-modern h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.day-title {
+    color: #333;
+}
+
+.timeblock-modern {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: #fafafa;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.timeblock-modern .time {
+    min-width: 80px;
+    font-weight: 700;
+    color: #00CED1;
+}
+
+.timeblock-modern .details {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.timeblock-modern a {
+    color: #00CED1;
+    text-decoration: none;
+}
+
+.timeblock-modern a:hover {
+    text-decoration: underline;
 }
