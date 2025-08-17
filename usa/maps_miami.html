@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script> L_NO_TOUCH = false; L_DISABLE_3D = false; </script>
+
+    <style>html, body {width:100%;height:100%;margin:0;padding:0;}</style>
+    <style>#map_c19d50558f0a3ccce536257b12a2972c {position:relative;width:100%;height:100%;left:0;top:0;}</style>
+
+    <!-- Leaflet -->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+
+    <!-- jQuery / Bootstrap -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+
+    <!-- Awesome Markers -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+
+    <!-- MarkerCluster -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+    <style>
+        .fit-bounds-btn{
+          position:absolute;top:10%;left:10px;z-index:1000;
+          background:#fff;border:1px solid #ccc;padding:6px 10px;border-radius:4px;cursor:pointer
+        }
+        .legend{
+          position:absolute;bottom:12px;left:10px;z-index:1000;
+          background:#fff;border:1px solid #ccc;padding:8px 10px;border-radius:4px;font-size:13px;line-height:1.6
+        }
+        .legend i{margin-right:6px;}
+    </style>
+</head>
+<body>
+<div id="map_c19d50558f0a3ccce536257b12a2972c"></div>
+<div class="fit-bounds-btn" onclick="map.fitBounds(allMarkers.getBounds())">📍 Mostrar tudo</div>
+<div class="legend">
+    <div><i class="fa fa-cutlery" style="color:#fff;background:#F39C12;padding:3px 5px;border-radius:3px"></i> Comida & Café</div>
+    <div><i class="fa fa-university" style="color:#fff;background:#8E44AD;padding:3px 5px;border-radius:3px"></i> Cultura & Museus</div>
+    <div><i class="fa fa-tree" style="color:#fff;background:#27AE60;padding:3px 5px;border-radius:3px"></i> Praias & Parques</div>
+    <div><i class="fa fa-star" style="color:#fff;background:#3498DB;padding:3px 5px;border-radius:3px"></i> Pontos Turísticos</div>
+    <div><i class="fa fa-train" style="color:#fff;background:#C0392B;padding:3px 5px;border-radius:3px"></i> Transporte</div>
+</div>
+</body>
+
+<script>
+    // Mapa
+    var map = L.map("map_c19d50558f0a3ccce536257b12a2972c", {
+      center: [26.172, -80.131], // Oakland Park / Fort Lauderdale area
+      crs: L.CRS.EPSG3857,
+      zoom: 12,
+      zoomControl: true,
+      preferCanvas: false,
+    });
+
+    // Tiles
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: 'Data by &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+      maxZoom: 18
+    }).addTo(map);
+
+    // Grupos
+    var allMarkers = L.featureGroup().addTo(map);
+    var cluster = L.markerClusterGroup({});
+    map.addLayer(cluster);
+
+    // Ícones por categoria
+    var ICONS = {
+      food:      L.AwesomeMarkers.icon({ icon:'cutlery',   prefix:'fa', markerColor:'orange'   }),
+      culture:   L.AwesomeMarkers.icon({ icon:'university',prefix:'fa', markerColor:'purple'   }),
+      park:      L.AwesomeMarkers.icon({ icon:'tree',      prefix:'fa', markerColor:'green'    }),
+      sight:     L.AwesomeMarkers.icon({ icon:'star',      prefix:'fa', markerColor:'blue'     }),
+      transport: L.AwesomeMarkers.icon({ icon:'train',     prefix:'fa', markerColor:'darkred'  })
+    };
+
+    function add(name, lat, lng, category){
+      var icon = ICONS[category] || ICONS.sight;
+      var marker = L.marker([lat,lng], {icon});
+      marker.bindPopup('<div style="min-width:200px"><strong>'+name+'</strong></div>');
+      cluster.addLayer(marker);
+      allMarkers.addLayer(marker);
+    }
+
+    // --- Fort Lauderdale & arredores ---
+    // Praias & Parques
+    add("Las Olas Beach", 26.1192, -80.1045, "park");
+    add("Fort Lauderdale Beach Park", 26.112015, -80.104819, "park");
+    add("Lauderdale-by-the-Sea (praia e centrinho)", 26.192028, -80.0964326, "park");
+    add("Pompano Municipal / Fisher Family Pier", 26.235363, -80.088976, "park");
+    add("Crandon Park (Key Biscayne)", 25.7095, -80.1547, "park");
+    add("Bill Baggs Cape Florida State Park", 25.673611, -80.159444, "park");
+
+    // Cultura & Museus
+    add("Bonnet House Museum & Gardens", 26.13511, -80.105866, "culture");
+
+    // Pontos Turísticos
+    add("Las Olas Boulevard", 26.11964, -80.123848, "sight");
+    add("Riverwalk Fort Lauderdale", 26.11916, -80.143744, "sight");
+    add("Seminole Hard Rock (Guitar Hotel)", 26.051809, -80.211464, "sight");
+    add("Everglades Holiday Park (airboat)", 26.0604675, -80.4442146, "sight");
+    add("Sawgrass Mills (outlet)", 26.151697, -80.320900, "sight");
+
+    // Comida & Café (favoritos e à beira d’água)
+    add("Louie Bossi’s (Las Olas)", 26.1196, -80.1326, "food");
+    add("Coconuts (Intracoastal)", 26.1159, -80.1060, "food");
+    add("Casa Sensei (à beira do canal)", 26.1196, -80.1296, "food");
+    add("Shooters Waterfront", 26.1668, -80.1019, "food");
+    add("Beach House Pompano", 26.23741, -80.08858, "food");
+    add("Lucky Fish Pompano (pé na areia)", 26.2378, -80.0889, "food");
+    add("Aruba Beach Café (LBTS)", 26.1920, -80.0965, "food");
+    add("The Alchemist Café (Wilton Manors)", 26.1569, -80.1315, "food");
+    add("Rosie’s Bar & Grill (Wilton Manors)", 26.1575, -80.1396, "food");
+    add("Wilton Creamery (sorvetes)", 26.1585, -80.1388, "food");
+
+    // Ajuste inicial de enquadramento
+    if (allMarkers.getLayers().length) {
+      map.fitBounds(allMarkers.getBounds(), {padding:[30,30]});
+    }
+</script>
+</html>
