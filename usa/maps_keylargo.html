@@ -1,305 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    
-        <script>
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        </script>
-    
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <script> L_NO_TOUCH = false; L_DISABLE_3D = false; </script>
+
+    <style>html, body {width:100%;height:100%;margin:0;padding:0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+
+    <!-- Leaflet -->
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <style>
-                #map_7a9a1cdd5e212d282580cfcf10c463c9 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-            </style>
-        
+
+    <!-- Cluster -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+
+    <!-- Awesome Markers -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <style>
+        #map_7a9a1cdd5e212d282580cfcf10c463c9 { width:100%; height:100%; }
+        .fit-bounds-btn {
+          position: absolute; top: 10%; left: 10px; z-index:1000;
+          background:#fff; border:1px solid #ccc; padding:6px 12px;
+          cursor:pointer; border-radius:4px; font-size:14px;
+        }
+    </style>
 </head>
 <body>
-    
-    
-            <div class="folium-map" id="map_7a9a1cdd5e212d282580cfcf10c463c9" ></div>
-        
+<div id="map_7a9a1cdd5e212d282580cfcf10c463c9"></div>
+<div class="fit-bounds-btn" onclick="map.fitBounds(allMarkers.getBounds())">
+    📍 Mostrar todas as paradas
+</div>
 </body>
+
 <script>
-    
-    
-            var map_7a9a1cdd5e212d282580cfcf10c463c9 = L.map(
-                "map_7a9a1cdd5e212d282580cfcf10c463c9",
-                {
-                    center: [25.1208, -80.4065],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 9,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
+    var map = L.map("map_7a9a1cdd5e212d282580cfcf10c463c9", {
+      center: [25.1208, -80.4065], zoom: 9
+    });
 
-            
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: 'Data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-        
-    
-            var tile_layer_3413b890510736693cdebaf2e08b3eb6 = L.tileLayer(
-                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_7a9a1cdd5e212d282580cfcf10c463c9);
-        
-    
-            var marker_cluster_e812dbd04aeab35860fb966806a04466 = L.markerClusterGroup(
-                {}
-            );
-            map_7a9a1cdd5e212d282580cfcf10c463c9.addLayer(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-            var marker_a9bbc09b498876e2e237790c9d32aac3 = L.marker(
-                [25.1208, -80.4065],
-                {}
-            ).addTo(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-        var popup_1f3d28d6ae36b223644ba93d55a299b0 = L.popup({"maxWidth": "100%"});
+    var allMarkers = L.featureGroup().addTo(map);
+    var cluster = L.markerClusterGroup();
+    map.addLayer(cluster);
 
-        
-            var html_fb22b90a8930dd340da255d9426b759a = $(`<div id="html_fb22b90a8930dd340da255d9426b759a" style="width: 100.0%; height: 100.0%;">Spray Watersports</div>`)[0];
-            popup_1f3d28d6ae36b223644ba93d55a299b0.setContent(html_fb22b90a8930dd340da255d9426b759a);
-        
+    // Ícones personalizados
+    var foodIcon = L.AwesomeMarkers.icon({ icon: 'cutlery', prefix: 'fa', markerColor: 'orange' });
+    var funIcon  = L.AwesomeMarkers.icon({ icon: 'star', prefix: 'fa', markerColor: 'blue' });
+    var sunsetIcon = L.AwesomeMarkers.icon({ icon: 'sun-o', prefix: 'fa', markerColor: 'ffaf17' });
 
-        marker_a9bbc09b498876e2e237790c9d32aac3.bindPopup(popup_1f3d28d6ae36b223644ba93d55a299b0)
-        ;
+    // Função helper
+    function add(name, lat, lng, url, category){
+      var icon = (category==="food") ? foodIcon : (category==="sunset" ? sunsetIcon : funIcon);
+      var marker = L.marker([lat,lng], {icon: icon});
+      var html = '<div style="min-width:160px"><strong>'+name+'</strong>' + (url ? ('<br><a href="'+url+'" target="_blank">Abrir site</a>') : '') + '</div>';
+      marker.bindPopup(html);
+      cluster.addLayer(marker);
+      allMarkers.addLayer(marker);
+    }
 
-        
-    
-    
-            var marker_b5ea82e5222aea1a969be5030fccda8e = L.marker(
-                [25.1313, -80.4145],
-                {}
-            ).addTo(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-        var popup_a9d32e8345e698466c17fe3c97d20529 = L.popup({"maxWidth": "100%"});
+    // Pontos
+    add("Spray Watersports", 25.1208, -80.4065, "https://spraywatersports.com","fun");
+    add("Mrs. Mac's Kitchen", 25.1313, -80.4145, "https://www.mrsmacskitchen.com/","food");
+    add("Jimmy Johnson’s Big Chill", 25.1471, -80.3765, "https://www.jjsbigchill.com/","sunset");
+    add("John Pennekamp Park", 25.1234, -80.4068, null,"fun");
+    add("Robbie’s of Islamorada", 24.9203, -80.6274, "https://www.robbies.com/","fun");
+    add("Seven Mile Bridge", 24.7057, -81.1242,null,"fun");
+    add("Duval Street, Key West", 24.5551, -81.8016,null,"fun");
+    add("Mallory Square", 24.5592, -81.8080,null,"sunset");
+    add("Rain Barrel Village", 24.9785, -80.5481,"https://rainbarrelvillage.com/","fun");
+    add("Lorelei Restaurant", 24.9252, -80.6279,"https://www.loreleicabanabar.com/","food");
+    add("Tiki Bar at Postcard Inn", 24.9267, -80.6266,null,"food");
+    add("Lazy Lobster Seafood Restaurant", 25.1232, -80.4029,"https://lazy-lobster.com/","food");
 
-        
-            var html_32d57b920aebebf576aee0d375d45a81 = $(`<div id="html_32d57b920aebebf576aee0d375d45a81" style="width: 100.0%; height: 100.0%;">Mrs. Mac's Kitchen</div>`)[0];
-            popup_a9d32e8345e698466c17fe3c97d20529.setContent(html_32d57b920aebebf576aee0d375d45a81);
-        
+    // Novos
+    add("Hog Heaven Sports Bar & Grill", 24.951016, -80.59102,"https://hogheavenbarandgrill.com/","food");
+    add("Southernmost Point Buoy", 24.546506, -81.797487,null,"fun");
+    add("El Siboney Restaurant", 24.55211, -81.79283,"https://www.elsiboneyrestaurant.com/","food");
+    add("Sloppy Joe’s", 24.55906, -81.80503,"https://sloppyjoes.com/","food");
+    add("Islamorada Brewery & Distillery", 24.924294, -80.627836,"http://www.islamoradabreweryanddistillery.com/","food");
 
-        marker_b5ea82e5222aea1a969be5030fccda8e.bindPopup(popup_a9d32e8345e698466c17fe3c97d20529)
-        ;
-
-        
-    
-    
-            var marker_7c392e22f790c4bffb8bedef820d04e7 = L.marker(
-                [25.1234, -80.4068],
-                {}
-            ).addTo(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-        var popup_0e2ff790ef65e3098b133067f0f7d779 = L.popup({"maxWidth": "100%"});
-
-        
-            var html_d65b292b684ea57bd6b125208f703aae = $(`<div id="html_d65b292b684ea57bd6b125208f703aae" style="width: 100.0%; height: 100.0%;">John Pennekamp Park</div>`)[0];
-            popup_0e2ff790ef65e3098b133067f0f7d779.setContent(html_d65b292b684ea57bd6b125208f703aae);
-        
-
-        marker_7c392e22f790c4bffb8bedef820d04e7.bindPopup(popup_0e2ff790ef65e3098b133067f0f7d779)
-        ;
-
-        
-    
-    
-            var marker_e589209f79a14747027f83db233efb4b = L.marker(
-                [25.1471, -80.3765],
-                {}
-            ).addTo(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-        var popup_4e9c226472bd3e01b59117b224081866 = L.popup({"maxWidth": "100%"});
-
-        
-            var html_10ed478051fbeef1bbd81285a7d9c18a = $(`<div id="html_10ed478051fbeef1bbd81285a7d9c18a" style="width: 100.0%; height: 100.0%;">Jimmy Johnson’s Big Chill</div>`)[0];
-            popup_4e9c226472bd3e01b59117b224081866.setContent(html_10ed478051fbeef1bbd81285a7d9c18a);
-        
-
-        marker_e589209f79a14747027f83db233efb4b.bindPopup(popup_4e9c226472bd3e01b59117b224081866)
-        ;
-
-        
-    
-    
-            var marker_b18910e5f70aa575002cd5bedd495af8 = L.marker(
-                [24.9203, -80.6274],
-                {}
-            ).addTo(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-        var popup_462353f5f8942ca87a5eb08f93127110 = L.popup({"maxWidth": "100%"});
-
-        
-            var html_063c7344393196b20a7c127ca6bb3cee = $(`<div id="html_063c7344393196b20a7c127ca6bb3cee" style="width: 100.0%; height: 100.0%;">Robbie’s of Islamorada</div>`)[0];
-            popup_462353f5f8942ca87a5eb08f93127110.setContent(html_063c7344393196b20a7c127ca6bb3cee);
-        
-
-        marker_b18910e5f70aa575002cd5bedd495af8.bindPopup(popup_462353f5f8942ca87a5eb08f93127110)
-        ;
-
-        
-    
-    
-            var marker_85bf844601d1c437c976f5545cb7de9b = L.marker(
-                [24.7057, -81.1242],
-                {}
-            ).addTo(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-        var popup_7737751e9ef720f5fa50521f03f2fdb4 = L.popup({"maxWidth": "100%"});
-
-        
-            var html_1f8491443856d25beca492b434284e89 = $(`<div id="html_1f8491443856d25beca492b434284e89" style="width: 100.0%; height: 100.0%;">Seven Mile Bridge</div>`)[0];
-            popup_7737751e9ef720f5fa50521f03f2fdb4.setContent(html_1f8491443856d25beca492b434284e89);
-        
-
-        marker_85bf844601d1c437c976f5545cb7de9b.bindPopup(popup_7737751e9ef720f5fa50521f03f2fdb4)
-        ;
-
-        
-    
-    
-            var marker_03481c8a837da2357368242616e040ff = L.marker(
-                [24.5551, -81.8016],
-                {}
-            ).addTo(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-        var popup_dab6c4f3e136480e19829ede5a693eac = L.popup({"maxWidth": "100%"});
-
-        
-            var html_b5b92dcec601a28ad28277ee0fb89a43 = $(`<div id="html_b5b92dcec601a28ad28277ee0fb89a43" style="width: 100.0%; height: 100.0%;">Duval Street, Key West</div>`)[0];
-            popup_dab6c4f3e136480e19829ede5a693eac.setContent(html_b5b92dcec601a28ad28277ee0fb89a43);
-        
-
-        marker_03481c8a837da2357368242616e040ff.bindPopup(popup_dab6c4f3e136480e19829ede5a693eac)
-        ;
-
-        
-    
-    
-            var marker_6c966b300abffd8857c8059c2cefe450 = L.marker(
-                [24.5592, -81.808],
-                {}
-            ).addTo(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-        var popup_dac261912f8fa1fc77bec38c3a9c0b75 = L.popup({"maxWidth": "100%"});
-
-        
-            var html_d99bc38cce25bd2dee50574856d73140 = $(`<div id="html_d99bc38cce25bd2dee50574856d73140" style="width: 100.0%; height: 100.0%;">Mallory Square</div>`)[0];
-            popup_dac261912f8fa1fc77bec38c3a9c0b75.setContent(html_d99bc38cce25bd2dee50574856d73140);
-        
-
-        marker_6c966b300abffd8857c8059c2cefe450.bindPopup(popup_dac261912f8fa1fc77bec38c3a9c0b75)
-        ;
-
-        
-    
-    
-            var marker_1119adcf2b36b5d21e3b45fe0fe035e3 = L.marker(
-                [24.9785, -80.5481],
-                {}
-            ).addTo(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-        var popup_cf790520848fb671b85210b7137061a9 = L.popup({"maxWidth": "100%"});
-
-        
-            var html_a0fc19f0bb356aad8e3ceefb8224aaf2 = $(`<div id="html_a0fc19f0bb356aad8e3ceefb8224aaf2" style="width: 100.0%; height: 100.0%;">Rain Barrel Village</div>`)[0];
-            popup_cf790520848fb671b85210b7137061a9.setContent(html_a0fc19f0bb356aad8e3ceefb8224aaf2);
-        
-
-        marker_1119adcf2b36b5d21e3b45fe0fe035e3.bindPopup(popup_cf790520848fb671b85210b7137061a9)
-        ;
-
-        
-    
-    
-            var marker_5312a970f47f1d8b8bd497e9957f913f = L.marker(
-                [24.9252, -80.6279],
-                {}
-            ).addTo(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-        var popup_ca11b892b84dee06fc66cc468d2fb385 = L.popup({"maxWidth": "100%"});
-
-        
-            var html_4b758e640334b95dff2b44b05872b499 = $(`<div id="html_4b758e640334b95dff2b44b05872b499" style="width: 100.0%; height: 100.0%;">Lorelei Restaurant</div>`)[0];
-            popup_ca11b892b84dee06fc66cc468d2fb385.setContent(html_4b758e640334b95dff2b44b05872b499);
-        
-
-        marker_5312a970f47f1d8b8bd497e9957f913f.bindPopup(popup_ca11b892b84dee06fc66cc468d2fb385)
-        ;
-
-        
-    
-    
-            var marker_46072531a1af7e8d45674e95352dfd90 = L.marker(
-                [24.9267, -80.6266],
-                {}
-            ).addTo(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-        var popup_f05731fc82e33453bf43f44db2c85283 = L.popup({"maxWidth": "100%"});
-
-        
-            var html_dc92e9d335c8881f8e4f629888f5b12b = $(`<div id="html_dc92e9d335c8881f8e4f629888f5b12b" style="width: 100.0%; height: 100.0%;">Tiki Bar at Postcard Inn</div>`)[0];
-            popup_f05731fc82e33453bf43f44db2c85283.setContent(html_dc92e9d335c8881f8e4f629888f5b12b);
-        
-
-        marker_46072531a1af7e8d45674e95352dfd90.bindPopup(popup_f05731fc82e33453bf43f44db2c85283)
-        ;
-
-        
-    
-    
-            var marker_2908964016a13d53cdcccad7f57b3085 = L.marker(
-                [25.1232, -80.4029],
-                {}
-            ).addTo(marker_cluster_e812dbd04aeab35860fb966806a04466);
-        
-    
-        var popup_a33e75819725cc1d243024678c60a6cf = L.popup({"maxWidth": "100%"});
-
-        
-            var html_cb1bee3c667bde90147edf257837ff7a = $(`<div id="html_cb1bee3c667bde90147edf257837ff7a" style="width: 100.0%; height: 100.0%;">Lazy Lobster</div>`)[0];
-            popup_a33e75819725cc1d243024678c60a6cf.setContent(html_cb1bee3c667bde90147edf257837ff7a);
-        
-
-        marker_2908964016a13d53cdcccad7f57b3085.bindPopup(popup_a33e75819725cc1d243024678c60a6cf)
-        ;
-
-        
-    
 </script>
 </html>
