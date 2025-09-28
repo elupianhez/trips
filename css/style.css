@@ -1447,6 +1447,34 @@ input::-ms-input-placeholder {
     line-height: 1.6;
 }
 
+.timeblock .time {
+	flex-shrink: 0;
+	color: #00bcd4;
+	font-weight: 600;
+	min-width: 120px;
+}
+.timeblock-content {
+	flex-grow: 1;
+}
+.timeblock-title {
+	font-weight: 600;
+	color: #222;
+	margin-bottom: 0.2rem;
+}
+.timeblock-meta {
+	font-size: 0.85rem;
+	color: #555;
+	margin-bottom: 0.2rem;
+}
+.timeblock-notes {
+	font-size: 0.8rem;
+	color: #777;
+	font-style: italic;
+}
+
+.land{font-weight:600;color:#374151}
+.how{font-style:italic;color:#2563eb}
+
 .timeblock-modern a {
     color: #00CED1;
     text-decoration: none;
@@ -1455,3 +1483,22 @@ input::-ms-input-placeholder {
 .timeblock-modern a:hover {
     text-decoration: underline;
 }
+.timeblock-title.parks{
+    font-size: 20px;
+}
+
+/* Linha de informações: LAND + HOW como "badges" */
+ .timeblock-meta{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
+ .timeblock-meta .land{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:#0f172a;background:#e2e8f0;border:1px solid #d7dde7;border-radius:999px;padding:6px 10px}
+ .timeblock-meta .land:before{content:"🌍"}
+ .timeblock-meta .how{display:inline-flex;align-items:center;gap:6px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:#e0f2fe;border:1px solid #bee3ff;color:#075985;border-radius:999px;padding:6px 10px}
+ .timeblock-meta .how:before{content:"⚡"}
+
+ .timeblock-meta .land.montanha:before{content:"🎢"}
+ .timeblock-meta .land.agua:before{content:"💦"}
+ .timeblock-meta .land.simulacao:before{content:"🕶️"}
+ .timeblock-meta .land.montanha.agua:before{content:"🎢 💦"}
+ .timeblock-meta .land.montanha.simulacao:before{content:"🎢 🕶️"}
+
+/* Notas em caixa destacada (seção Observações) */
+ .timeblock-notes{position:relative;background:linear-gradient(0deg,#f8fafc,#f8fafc);border:1px solid #e8ecf2;border-radius:12px;padding:10px 12px 10px 14px;color:#334155;font-size:.98rem;font-style:italic}
