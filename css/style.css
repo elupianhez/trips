@@ -1494,10 +1494,17 @@ input::-ms-input-placeholder {
  .timeblock-meta .how{display:inline-flex;align-items:center;gap:6px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:#e0f2fe;border:1px solid #bee3ff;color:#075985;border-radius:999px;padding:6px 10px}
  .timeblock-meta .how:before{content:"⚡"}
 
+
+ .timeblock-meta .land.orca:before{content:"🐋️"}
+ .timeblock-meta .land.tubarao:before{content:"🦈"}
+ .timeblock-meta .land.golfinho:before{content:"🐬"}
+ .timeblock-meta .land.deslocamento:before{content:"🚶‍♂️🚶‍♀️"}
+ .timeblock-meta .land.comida:before{content:"🍽"}
+ .timeblock-meta .land.transporte:before{content:"🚡"}
  .timeblock-meta .land.montanha:before{content:"🎢"}
- .timeblock-meta .land.agua:before{content:"💦"}
+ .timeblock-meta .land.agua:before{content:"🌊"}
  .timeblock-meta .land.simulacao:before{content:"🕶️"}
- .timeblock-meta .land.montanha.agua:before{content:"🎢 💦"}
+ .timeblock-meta .land.montanha.agua:before{content:"🎢 🌊"}
  .timeblock-meta .land.montanha.simulacao:before{content:"🎢 🕶️"}
 
 /* Notas em caixa destacada (seção Observações) */
