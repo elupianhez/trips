@@ -13,19 +13,7 @@ body {
     background: #ffffff;
 }
 
-a {
-    color: #00CED1;
-    transition: 0.5s;
-    font-weight: 700;
-}
 
-a:hover,
-a:active,
-a:focus {
-    color: #00CED1;
-    outline: none;
-    text-decoration: none;
-}
 
 p {
     color: #666;
@@ -419,18 +407,7 @@ h6 {
     }
 }
 
-#welcome a {
-    display: inline-block;
-    padding: 7px 30px;
-    color: #00CED1;
-    background: #222222;
-    border-radius: 30px;
-}
 
-#welcome a:hover {
-    color: #222222;
-    background: #00CED1;
-}
 
 /* ================================================= */
 /* -------------- Section Header Style ------------- */
@@ -902,20 +879,7 @@ h6 {
     margin-top: 5px;
 }
 
-#rooms .room-link a {
-    display: inline-block;
-    padding: 7px 30px;
-    color: #00CED1;
-    border-radius: 30px;
-    background: white;
-    margin-bottom: 10px;
-    width: 96%;
-}
 
-#rooms .room-link a:hover {
-    color: #222222;
-    background: #00CED1;
-}
 
 #rooms hr {
     width: 75%;
